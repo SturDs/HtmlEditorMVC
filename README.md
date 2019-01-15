@@ -1,5 +1,5 @@
-# HtmlEditorMVC
-This is an HTML Editor in MVC Razor
+# RichHtmlEditorMVC
+This is a Rich HTML Editor in MVC Razor
 
 It easy to use and custom as you like.
 
@@ -18,7 +18,6 @@ The Editor in HTML with few buttons are in "_Word.cshtml".
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ValidateInput(false)]
         public async Task<ActionResult> Create(Titolo titolo)
         {
             ViewBag.ToDo = "Create";
