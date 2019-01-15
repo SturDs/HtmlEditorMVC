@@ -1,5 +1,5 @@
-# RichHtmlEditorMVC
-This is a Rich HTML Editor in MVC Razor
+# RichTextHtmlEditorMVC
+This is a Rich Text HTML Editor in MVC Razor
 
 It easy to use and custom as you like.
 
