@@ -16,15 +16,20 @@ The Editor in HTML with few buttons are in "_Word.cshtml".
 
 ...and here is how to get it on your Controller:
 
+        public ActionResult Index()
+        {
+            MyModel myModel = new MyModel();
+
+            return View(myModel);
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Titolo titolo)
+        public ActionResult Index(MyModel myModel)
         {
-            ViewBag.ToDo = "Create";
-
             //--- Content of the HTML Editor we have created in this tutorial
-            string contentOfHTMLEditor = titolo.MyHtmlData;
+            ViewBag.contentOfHTMLEditor = myModel.MyHtmlData;
 
-            return View(titolo);
-        }
-        
+            return View(myModel);
+        }        
