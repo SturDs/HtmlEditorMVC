@@ -1,0 +1,149 @@
+@model myWordParam
+
+@using VirtualFid.Helper
+
+@* 
+    I don't use CSS or JS files so you can easly understand what is this, just read below! ;-) 
+
+    So you can easly update it as you wish to...
+*@
+
+<div style="border:1px solid #ccc;padding:3px;background-color:#eee;">
+    <div style="float:left;">
+        <a href="#" onclick="document.execCommand('Bold'); return false;" title="Bold"><img src="/Images/EditorHtml/Bold.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('Italic'); return false;" title="Italic"><img src="/Images/EditorHtml/Italic.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('Underline'); return false;" title="Underline"><img src="/Images/EditorHtml/Underline.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('justifyleft'); return false;" title="Left"><img src="/Images/EditorHtml/justifyleft.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('justifycenter'); return false;" title="Center"><img src="/Images/EditorHtml/justifycenter.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('justifyright'); return false;" title="Right"><img src="/Images/EditorHtml/justifyright.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('justifyfull'); return false;" title="Justify"><img src="/Images/EditorHtml/justifyfull.jpg" width="16" height="16" /></a>
+
+        <a href="#" onclick="document.execCommand('forecolor', false, 'black'); return false;" title="Black"><img src="/Images/EditorHtml/Black.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('forecolor', false, 'Gray'); return false;" title="Gray"><img src="/Images/EditorHtml/Gray.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('forecolor', false, 'Blue'); return false;" title="Blue"><img src="/Images/EditorHtml/Blue.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('forecolor', false, 'Red'); return false;" title="Red"><img src="/Images/EditorHtml/Red.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('forecolor', false, 'Green'); return false;" title="Green"><img src="/Images/EditorHtml/Green.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('forecolor', false, 'Yellow'); return false;" title="Yellow"><img src="/Images/EditorHtml/Yellow.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('forecolor', false, 'White'); return false;" title="White"><img src="/Images/EditorHtml/White.jpg" width="16" height="16" /></a>
+
+        <a href="#" onclick="document.execCommand('createLink', false, window.prompt('Url','')); return false;" title="Create Link"><img src="/Images/EditorHtml/CreateLink.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('unlink', false, false); return false;" title="No Link"><img src="/Images/EditorHtml/unLink.jpg" width="16" height="16" /></a>
+
+
+        <a href="#" onclick="document.execCommand('insertHTML', false, '<div class=\'code\'><pre><code>' + document.getSelection() + '</code></pre></div>'); return false;" title="<pre></pre>"><img src="/Images/EditorHtml/pre.jpg" width="16" height="16" /></a>
+
+        <a href="#" onclick="document.execCommand('insertHTML', false, '<h1>' + document.getSelection() + '</h1>'); return false;" title="<h1></h1>"><img src="/Images/EditorHtml/h1.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('insertHTML', false, '<h2>' + document.getSelection() + '</h2>'); return false;" title="<h2></h2>"><img src="/Images/EditorHtml/h2.jpg" width="16" height="16" /></a>
+
+        <a href="#" onclick="document.execCommand('insertHTML', false, '<sub>' + document.getSelection() + '</sub>'); return false;" title="Subscript"><img src="/Images/EditorHtml/Subscript.jpg" width="16" height="16" /></a>
+        <a href="#" onclick="document.execCommand('insertHTML', false, '<sup>' + document.getSelection() + '</sup>'); return false;" title="Superscript"><img src="/Images/EditorHtml/Superscript.jpg" width="16" height="16" /></a>
+        &nbsp;&nbsp;
+    </div>
+
+    <div style="float:left;">
+        <input type="number" id="Rows" name="Rows" title="Rows" style="width:30px;height:16px;font-size:0.8em;" value="1" />
+        <input type="number" id="Cols" name="Cols" title="Cols" style="width:30px;height:16px;font-size:0.8em;" value="2" />
+        <input type="checkbox" id="Border" name="Border" title="Border" checked="checked" />
+        <a href="#" onclick="return fTable();" title="Table"><img src="/Images/EditorHtml/Table.jpg" width="16" height="16" /></a>
+        &nbsp;&nbsp;
+    </div>
+
+    <div style="float:left;padding-top:3px;">
+        <select id="fontSize" name="fontSize" onchange="return fFontSize();" title="Font Size" style="width:50px;height:16px;font-size:0.8em;">
+            <option value="10">Size</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+        </select>
+    </div>
+
+    <style>
+        #tableW, #tdW {
+            border: 1px solid black;
+        }
+
+        #tableWno, #tdWno {
+            border: 0px solid black;
+        }
+    </style>
+
+    <script type="text/javascript">
+    function fTable() {
+        var Rows = document.getElementById("Rows");
+        var Cols = document.getElementById("Cols");
+        var Border = document.getElementById("Border");
+
+        var strBorder = "no";
+        if(Border.checked) {
+            strBorder = '';
+        }
+
+
+        var strTrTd = "";
+        var k = 0;
+        var j = 0;
+
+        for(k == 0; k < Rows.value; k++) {
+            strTrTd += '<tr>\n';
+            for(j == 0; j < Cols.value; j++) {
+                strTrTd += '<td id="tdW' + strBorder + '">&nbsp;Col' + j.toString() + '</td>\n';
+            }
+            strTrTd += '</tr>\n';
+            j = 0;
+        }
+
+        document.execCommand('insertHTML', false, '<table id="tableW' + strBorder + '" cellspacing="0" style="width:100%;" >' + strTrTd + document.getSelection() + '</table>');
+        return false;
+    }
+
+    function fFontSize() {
+        var fontSize = document.getElementById("fontSize");
+
+        document.execCommand('insertHTML', false, '<span style="font-size:' + fontSize.value + 'pt" >' + document.getSelection() + '</span>');
+        return false;
+    }
+
+    </script>
+
+
+
+
+
+
+    <div id="@(Model.NameID)Div" contenteditable="true" onblur="javascript: return copyToWord();" class="form-control" style="width:@(Model.Width); height:@(Model.Height);border:1px solid #ccc;overflow:auto;">
+        @if (Model != null && Model.Content != null)
+        {
+            @Html.Raw(Model.Content)
+        }
+    </div>
+    <input type="hidden" id="@(Model.NameID)" name="@(Model.NameID)" value="@Model.Content" style="width:100%" height="50" />
+    <script type="text/javascript">
+    function copyToWord()
+    {
+        var @(Model.NameID)Div = document.getElementById("@(Model.NameID)Div");
+        var @(Model.NameID) = document.getElementById("@(Model.NameID)");
+
+        @(Model.NameID).value = @(Model.NameID)Div.innerHTML;
+
+        return false;
+    }
+    </script>
+
+
+</div>
