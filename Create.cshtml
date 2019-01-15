@@ -1,0 +1,35 @@
+@model VirtualFid.Models.Titolo
+
+@using VirtualFid.Helper
+
+@{
+    string actionName = ViewBag.ToDo;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm(actionName, "Titolo")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group" >
+            @Html.LabelFor(model => model.MyHtmlData, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @* That's it! *@
+                @HelperExtensions.Word(Html, new myWordParam("MyHtmlData", Model.MyHtmlData, "100%", "400px"))
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4">
+                <button type="submit" title="Salva" class="btn btn-primary">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+
