@@ -1,6 +1,6 @@
+        //[ValidateInput(false)] 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ValidateInput(false)]
         public async Task<ActionResult> Create(Titolo titolo)
         {
             ViewBag.ToDo = "Create";
