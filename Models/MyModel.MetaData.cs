@@ -17,7 +17,7 @@ namespace MyRichTextMVC.Models
     public partial class MyModelMetaData
     {
         [Display(Name = "My Html Data")]
-        [AllowHtml]
+        [AllowHtml] 
         public string MyHtmlData { get; set; }
     }
 
