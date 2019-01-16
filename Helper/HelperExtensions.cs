@@ -14,7 +14,7 @@ namespace MyRichTextMVC.Helper
         {
             return html.Partial("~/Views/Shared/_Word.cshtml", oWord);
         }
-    }
+    } 
     
     /* Here is just simple few properties so you can add them more as you wish to  */
     public class myWordParam
