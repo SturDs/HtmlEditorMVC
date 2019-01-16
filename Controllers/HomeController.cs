@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace MyRichTextMVC.Controllers
 {
     public class HomeController : Controller
-    {
+    { 
         public ActionResult Index()
         {
             MyModel myModel = new MyModel();
